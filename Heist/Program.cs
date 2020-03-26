@@ -41,15 +41,22 @@ namespace Heist
                 }
             }
 
-            Console.WriteLine(ATeam.Count);
-
+            var BankDifficultyLevel = 100;
+            int TotalSkillLevel = 0;
             foreach(var teamMember in ATeam)
             {
-                teamMember.AnnounceMember();
+                TotalSkillLevel += int.Parse(teamMember.SkillLevel);
             }
 
-            
-        
+
+            if(BankDifficultyLevel <= TotalSkillLevel)
+            {
+                Console.WriteLine("You da shit!!");
+            }
+            else
+            {
+                Console.WriteLine("You suck, try again.");
+            }
         }
     }
 }
