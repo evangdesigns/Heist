@@ -32,7 +32,7 @@ namespace Heist
                 var TeamMember = new TeamMember(MemberName, SkillLevel, CourageFactor);
                 ATeam.Add(TeamMember);
 
-                Console.WriteLine("Do you know where your chidren are? Y/N");
+                Console.WriteLine("Would you like to add another team member? Y/N");
                 var answer = (Console.ReadLine());
 
                 if (answer.ToLower() == "n")
@@ -41,15 +41,20 @@ namespace Heist
                 }
             }
 
-            var BankDifficultyLevel = 100;
+            Random random = new Random();
+            var luckValue = random.Next(-10,11);
+
+            var BankDifficultyLevel = 100 + luckValue;
             int TotalSkillLevel = 0;
             foreach(var teamMember in ATeam)
             {
                 TotalSkillLevel += int.Parse(teamMember.SkillLevel);
             }
 
+            Console.WriteLine($"Your Team's combined skill level is {TotalSkillLevel} and the difficulty level is { BankDifficultyLevel}");
 
-            if(BankDifficultyLevel <= TotalSkillLevel)
+            
+            if (BankDifficultyLevel <= TotalSkillLevel)
             {
                 Console.WriteLine("You da shit!!");
             }
