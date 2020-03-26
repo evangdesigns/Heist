@@ -7,13 +7,16 @@ namespace Heist
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Plan Your Heist");
+            Console.WriteLine("Enter the Bank Difficulty Level");
+            var BankDifficultyLevel = int.Parse(Console.ReadLine());
+
 
             var ATeam = new List<TeamMember>();
             var IsDone = false;
             
             while (!IsDone)
             {
-                Console.WriteLine("Plan Your Heist");
                 Console.WriteLine("What is Your Team Member's Name");
                 var MemberName = Console.ReadLine();
 
@@ -43,29 +46,38 @@ namespace Heist
             Console.WriteLine("Hey yo bitch, how many time you wanna do dis thang?");
             var YoBitch = Console.ReadLine();
 
+            var SuccessfulRun = 0;
+            var FailedRun = 0;
+
             for (int i = 0; i < int.Parse(YoBitch); i++)
             {
                 Random random = new Random();
                 var luckValue = random.Next(-10, 11);
 
-                var BankDifficultyLevel = 100 + luckValue;
+                var NewBankDifficultyLevel = BankDifficultyLevel + luckValue;
                 int TotalSkillLevel = 0;
                 foreach (var teamMember in ATeam)
                 {
                     TotalSkillLevel += int.Parse(teamMember.SkillLevel);
                 }
 
-                Console.WriteLine($"Your Team's combined skill level is {TotalSkillLevel} and the difficulty level is { BankDifficultyLevel}");
+                Console.WriteLine($"Your Team's combined skill level is {TotalSkillLevel} and the difficulty level is {NewBankDifficultyLevel}");
 
-                if (BankDifficultyLevel <= TotalSkillLevel)
+                if (NewBankDifficultyLevel <= TotalSkillLevel)
                 {
-                    Console.WriteLine("You da shit!!");
+                    
+                    SuccessfulRun += 1;
                 }
                 else
                 {
-                    Console.WriteLine("You suck, try again.");
+                    FailedRun += 1;
                 }
             }
+
+            Console.WriteLine(@$"You successfully passed {SuccessfulRun} times.
+And you just plain sucked {FailedRun} times.");
+
+            Console.ReadLine();
         }
     }
 }
