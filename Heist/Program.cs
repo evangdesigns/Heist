@@ -40,27 +40,31 @@ namespace Heist
                     IsDone = true;
                 }
             }
+            Console.WriteLine("Hey yo bitch, how many time you wanna do dis thang?");
+            var YoBitch = Console.ReadLine();
 
-            Random random = new Random();
-            var luckValue = random.Next(-10,11);
-
-            var BankDifficultyLevel = 100 + luckValue;
-            int TotalSkillLevel = 0;
-            foreach(var teamMember in ATeam)
+            for (int i = 0; i < int.Parse(YoBitch); i++)
             {
-                TotalSkillLevel += int.Parse(teamMember.SkillLevel);
-            }
+                Random random = new Random();
+                var luckValue = random.Next(-10, 11);
 
-            Console.WriteLine($"Your Team's combined skill level is {TotalSkillLevel} and the difficulty level is { BankDifficultyLevel}");
+                var BankDifficultyLevel = 100 + luckValue;
+                int TotalSkillLevel = 0;
+                foreach (var teamMember in ATeam)
+                {
+                    TotalSkillLevel += int.Parse(teamMember.SkillLevel);
+                }
 
-            
-            if (BankDifficultyLevel <= TotalSkillLevel)
-            {
-                Console.WriteLine("You da shit!!");
-            }
-            else
-            {
-                Console.WriteLine("You suck, try again.");
+                Console.WriteLine($"Your Team's combined skill level is {TotalSkillLevel} and the difficulty level is { BankDifficultyLevel}");
+
+                if (BankDifficultyLevel <= TotalSkillLevel)
+                {
+                    Console.WriteLine("You da shit!!");
+                }
+                else
+                {
+                    Console.WriteLine("You suck, try again.");
+                }
             }
         }
     }
