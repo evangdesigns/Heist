@@ -8,7 +8,7 @@ namespace Heist
     {
 
         public string Name { get; set; }
-        string SkillLevel { get; set; }
+        public string SkillLevel { get; set; }
         string CourageFactor { get; set; }
 
         public TeamMember(string memberName, string skillLevel, string courageFactor)
